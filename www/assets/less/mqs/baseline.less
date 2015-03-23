@@ -3,6 +3,65 @@
 	body {
 		background: @background;
 		color: @color;
+		padding-top: 4.68em;
+		padding-bottom: 3em;
+	}
+	
+	.hidden {
+		display: none;
+	}
+	
+	.fixed-ui(@param:'') {
+		display: block;
+		overflow: hidden;
+		background: @background;
+				
+		position: fixed;
+		z-index: 999;
+		
+		box-shadow: 0 2px 15px rgba(0,0,0, .2);
+		text-align: center;
+		text-transform: uppercase;
+	}
+	
+	header {
+		.fixed-ui;
+	
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+	
+	footer {
+		.fixed-ui;
+	
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+	
+	// canonical grid
+	#main {
+		max-width: 100%;
+		overflow: hidden;
+	}
+	
+	#container {
+		display: table;
+	}
+	
+	.row {
+		
+		display: table-row;
+		
+		.micromonial {
+			display: table-cell;
+		
+			img {
+				display: block;
+			}
+		}
+		
 	}
 	
 }

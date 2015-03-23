@@ -1,4 +1,62 @@
 body {
   background: #ffffff;
   color: #333333;
+  padding-top: 4.68em;
+  padding-bottom: 3em;
+}
+.hidden {
+  display: none;
+}
+header {
+  display: block;
+  overflow: hidden;
+  background: #ffffff;
+  position: fixed;
+  z-index: 999;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  text-transform: uppercase;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+footer {
+  display: block;
+  overflow: hidden;
+  background: #ffffff;
+  position: fixed;
+  z-index: 999;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  text-transform: uppercase;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+#main {
+  max-width: 100%;
+  overflow: hidden;
+}
+#container {
+  display: table;
+}
+.row {
+  display: table-row;
+}
+.row .micromonial {
+  display: table-cell;
+}
+.row .micromonial img {
+  display: block;
+}
+@media screen and (max-width: 40.063em) {
+  header h1 {
+    font-size: 1em;
+  }
+  footer {
+    display: none;
+  }
+  body {
+    padding-top: 2em;
+  }
 }
