@@ -11,6 +11,15 @@
 		display: none;
 	}
 	
+	.noselect {
+	    -webkit-touch-callout: none;
+	    -webkit-user-select: none;
+	    -khtml-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
+	}
+	
 	.fixed-ui(@param:'') {
 		display: block;
 		overflow: hidden;
@@ -43,11 +52,19 @@
 	// canonical grid
 	#main {
 		max-width: 100%;
-		overflow: hidden;
+		overflow: auto;
 	}
 	
 	#container {
 		display: table;
+		
+		&:hover {
+			cursor: -webkit-grab;
+		}
+		
+		&:active {
+			cursor: -webkit-grabbing;
+		}
 	}
 	
 	.row {
@@ -56,9 +73,15 @@
 		
 		.micromonial {
 			display: table-cell;
+			min-width: 86px;
+			border: 1px solid #000;
+			
+			.noselect;
 		
 			img {
 				display: block;
+				max-width: 100%;
+				pointer-events: none;
 			}
 		}
 		
