@@ -44,9 +44,18 @@ $(document).ready(function() {
 		function showMicromonials() {
 			$main.toggleClass("loading", false);
 			
+			var $inviewport = $('.micromonial:in-viewport'),
+				total = Math.max(1, $inviewport.length);
+			
 			// get visible tiles
-			$('.micromonial:in-viewport').each(function(i) {
-				$(this).css({opacity: 0 }).delay(i*10).animate({ opacity: 1 }, "slow");
+			$inviewport.each(function(i) {
+				var $ref = $(this);
+				
+				$ref.addClass("animate");
+				
+				setTimeout(function() {
+					$ref.addClass("zoom");
+				}, i*(1000/total));
 			});
 		}
 		

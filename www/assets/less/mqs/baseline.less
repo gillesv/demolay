@@ -85,7 +85,8 @@
 		.micromonial {
 			display: table-cell;
 			min-width: 86px;
-			border: 1px solid #000;
+			vertical-align: middle;
+			
 			
 			.noselect;
 		
@@ -93,6 +94,24 @@
 				display: block;
 				max-width: 100%;
 				pointer-events: none;
+				position: relative;
+				
+			}
+			
+			&.animate {
+				img {
+					-webkit-transition: all 0s ease-out;
+					-webkit-transform-origin: center center;
+					-webkit-transform: scale3d(0, 0, 0) translateZ(200px);
+					
+				}				
+			}
+			
+			&.animate.zoom {
+				img {
+					-webkit-transition-duration: .3s;
+					-webkit-transform: scale3d(1, 1, 1) translateZ(0px);
+				}
 			}
 		}
 		
