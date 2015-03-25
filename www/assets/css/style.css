@@ -48,6 +48,9 @@ footer {
   right: -20px;
   overflow: auto;
 }
+#main.loading {
+  background: transparent url(../img/spinner.gif) no-repeat center center;
+}
 #container {
   display: table;
 }
@@ -56,6 +59,9 @@ footer {
 }
 #container:active {
   cursor: -webkit-grabbing;
+}
+.loading #container {
+  opacity: 0;
 }
 .row {
   display: table-row;

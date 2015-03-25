@@ -9,13 +9,14 @@ $(document).ready(function() {
 	// STEP 1: load the data
 	$container.load("grid.html", function(evt){
 		// while we're waiting 500ms, show some animation or whatever
-		
 		//alert($window.height());
 		
 		setTimeout(function() {
 			snapToCenter();
 		}, 500);
 	});
+	
+	// system to figure out which elements are in the viewport
 	
 	// wait for the layout to be finished, then measure
 	function snapToCenter() {
@@ -39,6 +40,21 @@ $(document).ready(function() {
 				duration: 0	// instant, show animation
 			}
 		);
+		
+		function showMicromonials() {
+			$main.toggleClass("loading", false);
+			
+			// get visible tiles
+			$('.micromonial:in-viewport').each(function(i) {
+				$(this).css({opacity: 0 }).delay(i*10).animate({ opacity: 1 }, "slow");
+			});
+		}
+		
+		setTimeout(function() {
+			// show animation
+			showMicromonials();
+		}, 100);
+		
 		
 		setTimeout(function(){
 			if(!touch) {

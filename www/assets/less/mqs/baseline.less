@@ -56,6 +56,10 @@
 		left: 0;
 		right: -20px;
 		overflow: auto;
+		
+		&.loading {
+			background: transparent url(../img/spinner.gif) no-repeat center center;
+		}
 	}
 	
 	#container {
@@ -67,6 +71,10 @@
 		
 		&:active {
 			cursor: -webkit-grabbing;
+		}
+		
+		.loading &{
+			opacity: 0;
 		}
 	}
 	
