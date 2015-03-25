@@ -22,10 +22,10 @@ $(document).ready(function() {
 		var w1 = $container.width(),
 			h1 = $container.height(),
 			w2 = $window.width(),
-			h2 = $window.height();  //  iphone 5: 460 Safari, 550 in QR 
+			h2 = $window.height();  //  iphone 5: 460 Safari, 505 in QR 
 		
 		if(touch) {	// really dirty device detection hack
-			if(h2 == 550) {
+			if(h2 == 505) {
 				h2 = 460;
 			}
 		}
