@@ -10,7 +10,7 @@ $(document).ready(function() {
 	$container.load("grid.html", function(evt){
 		// while we're waiting 500ms, show some animation or whatever
 		
-		alert($window.height());
+		//alert($window.height());
 		
 		setTimeout(function() {
 			snapToCenter();
@@ -22,7 +22,13 @@ $(document).ready(function() {
 		var w1 = $container.width(),
 			h1 = $container.height(),
 			w2 = $window.width(),
-			h2 = $window.height();  // 460 iphone 5
+			h2 = $window.height();  //  iphone 5: 460 Safari, 550 in QR 
+		
+		if(touch) {	// really dirty device detection hack
+			if(h2 == 550) {
+				h2 = 460;
+			}
+		}
 		
 		// overflow toss to center
 		overthrow.toss(
