@@ -115,6 +115,11 @@ $(document).ready(function() {
 			moveScroll();
 		})();
 	}
+	
+	// event listeners
+	$main.on('click', '.micromonial', function(evt){
+		console.log("clicked: " + $(this).attr('id'));
+	});
 });
 
 // RAF fallback by http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
