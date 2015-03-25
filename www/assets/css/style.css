@@ -1,8 +1,7 @@
 body {
   background: #ffffff;
   color: #333333;
-  padding-top: 4.68em;
-  padding-bottom: 3em;
+  overflow-x: hidden;
 }
 .hidden {
   display: none;
@@ -42,7 +41,11 @@ footer {
   width: 100%;
 }
 #main {
-  max-width: 100%;
+  position: absolute;
+  top: 4.68em;
+  bottom: 1em;
+  left: 0;
+  right: -20px;
   overflow: auto;
 }
 #container {
@@ -80,8 +83,9 @@ footer {
   footer {
     display: none;
   }
-  body {
-    padding-top: 2em;
-    padding-bottom: 0;
+  #main {
+    top: 2em;
+    bottom: 0;
+    overflow: auto;
   }
 }

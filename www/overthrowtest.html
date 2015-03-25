@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Overthrow test</title>	
+	
+	<link rel="stylesheet" href="assets/css/normalize.css" />
+		
+	<style>
+		.overthrow {
+			overflow: auto;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		
+		.bigcontent {
+			display: table;
+			width: 5000px;
+			height: 5000px;
+			background: #cecece;
+		}
+		
+		.row {
+			display: table-row;
+		}
+		
+		.cell {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+	</style>
+		
+	<script src="assets/js/lib/modernizr-dev.js"></script>
+	<script>
+		Modernizr.load({
+			load: [
+					'//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',
+					'assets/js/lib/overthrow.js'
+				], 
+			complete: function(){
+				$(document).ready(function(){
+				
+					var w2 = Math.round($(window).width()/2),
+						h2 = Math.round($(window).height()/2);
+				
+					overthrow.toss(
+						document.getElementById("main"),
+						{
+							duration: 1000,
+							left: 2500  - w2,
+							top: 2500 - h2
+						}
+					);
+				});
+			}
+		});
+	</script>
+</head>
+<body>
+	<div id="main" class="overthrow">
+		<div class="bigcontent">
+			<div class="row">
+				<div class="cell">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

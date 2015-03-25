@@ -14,7 +14,20 @@ $(document).ready(function() {
 		}
 		
 		// overflow toss to center
+		/*
+		var h = $container.height();
 		
+		$main.css({height: h + 'px'});
+		*/
+		
+		overthrow.toss(
+			$main[0], 
+			{
+				top: "+600",
+				left: 500,
+				duration: 600
+			}
+		);
 	});
 	
 	// STEP 2: desktop drag scrolling
