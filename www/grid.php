@@ -4,8 +4,8 @@
 	
 	// generate static HTML, server-side, inject into source at runtime
 	
-	$numCols = 20;
-	$numRows = 30;
+	$numCols = 30;
+	$numRows = 20;
 	
 	for($i = 0; 
 		$i < $numRows;
