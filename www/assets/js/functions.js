@@ -10,6 +10,8 @@ $(document).ready(function() {
 	$container.load("grid.html", function(evt){
 		// while we're waiting 500ms, show some animation or whatever
 		
+		alert($window.height());
+		
 		setTimeout(function() {
 			snapToCenter();
 		}, 500);
@@ -20,7 +22,7 @@ $(document).ready(function() {
 		var w1 = $container.width(),
 			h1 = $container.height(),
 			w2 = $window.width(),
-			h2 = $window.height();
+			h2 = $window.height();  // 460 iphone 5
 		
 		// overflow toss to center
 		overthrow.toss(
