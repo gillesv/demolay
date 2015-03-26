@@ -88,6 +88,8 @@ footer {
   max-width: 100%;
   pointer-events: none;
   position: relative;
+  border: 1px solid #000;
+  box-sizing: border-box;
 }
 .row .micromonial.animate img {
   -webkit-transition: all 0s ease-out;
