@@ -6,6 +6,7 @@ $(document).ready(function() {
 		$window = $(window),
 		$darken = $('#darken'),
 		$overlay = $('#overlay'),
+		$animator = $('#animator'),
 		touch = Modernizr.touch;
 	
 	// STEP 1: load the data
@@ -132,7 +133,8 @@ $(document).ready(function() {
 	
 	// STEP 3: interactivity
 	var overlayVisible = false,
-		selectedIndex = -1;
+		selectedIndex = -1,
+		isSwiping = false;
 	
 	function showDarken() {
 		$darken.fadeIn("slow");
@@ -144,9 +146,13 @@ $(document).ready(function() {
 	
 	function showSelectedIndex(newIndex) {
 		if(newIndex < 0) {
-			$overlay.fadeOut("slow");
+			$overlay.fadeOut("slow", function(){
+				$animator.hide();
+			});
 		}else {
+			$animator.show();
 			$overlay.fadeIn("slow");
+			
 		}
 	}
 	
@@ -154,8 +160,53 @@ $(document).ready(function() {
 		hideDarken();
 		
 		overlayVisible = false;
+		isSwiping = false;
 		
 		showSelectedIndex(-1);
+	}
+	
+	function animRTL() {	// next
+		isSwiping = true;
+		
+		$animator.animate({
+			left: "-100%"
+		},
+		400,
+		function(){
+			$animator.css({
+				left: "100%" 
+			});
+			
+			$animator.animate({
+				left: "0%"
+			},
+			400,
+			function(){
+				isSwiping = false;
+			});
+		});
+	}
+	
+	function animLTR() {	// prev
+		isSwiping = true;
+		
+		$animator.animate({
+			left: "100%" 
+		},
+		400,
+		function(){
+			$animator.css({
+				left: "-100%" 
+			});
+			
+			$animator.animate({
+				left: "0%"	
+			},
+			400,
+			function(){
+				isSwiping = false;
+			});
+		});
 	}
 			
 	// event listeners
@@ -176,6 +227,27 @@ $(document).ready(function() {
 		
 		hideOverlay();		
 	});
+	
+	// touch events
+	var hammertime;
+	
+	if(touch) {
+		hammertime = new Hammer(document.getElementById("overlay"), {});
+		
+		hammertime.on("swipe", function(ev) {
+			if(!isSwiping) {
+				// swipe left & right
+				switch(ev.direction) {
+					case Hammer.DIRECTION_LEFT:
+						animRTL();
+					break;
+					case Hammer.DIRECTION_RIGHT:
+						animLTR();
+					break;
+				}
+			}
+		});
+	}
 });
 
 // RAF fallback by http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
