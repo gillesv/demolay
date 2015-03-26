@@ -1,5 +1,8 @@
 .baseline(@param:'') {
 	
+	@z-ui: 999;
+	@z-overlay: 1000;
+	
 	body {
 		background: @background;
 		color: @color;
@@ -25,7 +28,7 @@
 		background: @background;
 				
 		position: fixed;
-		z-index: 999;
+		z-index: @z-ui;
 		
 		box-shadow: 0 2px 15px rgba(0,0,0, .2);
 		text-align: center;
@@ -86,7 +89,14 @@
 			display: table-cell;
 			min-width: 86px;
 			vertical-align: middle;
+			transition: all .2s ease-in-out;
+			background: #333;
 			
+			&:hover {
+				img {
+					opacity: .7;
+				}
+			}
 			
 			.noselect;
 		
@@ -115,6 +125,31 @@
 			}
 		}
 		
+	}
+	
+	// overlays
+	
+	#darken {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		
+		z-index: @z-overlay;
+		
+		background: rgba(0, 0, 0, .7);
+	}
+	
+	#overlay {
+		position: absolute;
+		top: 4em;
+		left: 50%;
+		width: 512px;
+		margin-left: -256px;
+		background: #fff;
+		
+		z-index: @z-overlay + 1;
 	}
 	
 }

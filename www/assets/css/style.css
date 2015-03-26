@@ -71,12 +71,17 @@ footer {
   display: table-cell;
   min-width: 86px;
   vertical-align: middle;
+  transition: all 0.2s ease-in-out;
+  background: #333;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.row .micromonial:hover img {
+  opacity: .7;
 }
 .row .micromonial img {
   display: block;
@@ -92,6 +97,24 @@ footer {
 .row .micromonial.animate.zoom img {
   -webkit-transition-duration: .3s;
   -webkit-transform: scale3d(1, 1, 1) translateZ(0px);
+}
+#darken {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
+}
+#overlay {
+  position: absolute;
+  top: 4em;
+  left: 50%;
+  width: 512px;
+  margin-left: -256px;
+  background: #fff;
+  z-index: 1001;
 }
 @media screen and (max-width: 40.063em) {
   header h1 {

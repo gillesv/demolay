@@ -4,19 +4,17 @@ $(document).ready(function() {
 	var $main = $('#main'),
 		$container = $('#container'),
 		$window = $(window),
+		$darken = $('#darken'),
+		$overlay = $('#overlay'),
 		touch = Modernizr.touch;
 	
 	// STEP 1: load the data
 	$container.load("grid.html", function(evt){
 		// while we're waiting 500ms, show some animation or whatever
-		//alert($window.height());
-		
 		setTimeout(function() {
 			snapToCenter();
 		}, 500);
 	});
-	
-	// system to figure out which elements are in the viewport
 	
 	// wait for the layout to be finished, then measure
 	function snapToCenter() {
@@ -41,6 +39,7 @@ $(document).ready(function() {
 			}
 		);
 		
+		// system to figure out which elements are in the viewport, and animate them
 		function showMicromonials() {
 			$main.toggleClass("loading", false);
 			
@@ -64,7 +63,7 @@ $(document).ready(function() {
 			showMicromonials();
 		}, 100);
 		
-		
+		// init interactivity
 		setTimeout(function(){
 			if(!touch) {
 				initDesktopScrolling();
@@ -82,8 +81,8 @@ $(document).ready(function() {
 		deltaY = 0,
 		maxScrollLeft = 0,
 		maxScrollTop = 0,
-		curDown = false;
-	
+		curDown = false,
+		isDragging = false;
 		
 	function initDesktopScrolling () {
 		curScrollLeft = $main.scrollLeft();
@@ -102,6 +101,10 @@ $(document).ready(function() {
 		window.addEventListener("mouseup", function(e) {
 			curDown = false;
 			
+			setTimeout(function() {
+				isDragging = false;
+			}, 100);
+			
 			deltaX = deltaY = 0;
 		});
 	
@@ -109,11 +112,13 @@ $(document).ready(function() {
 			if(curDown) {
 				deltaX = curXPos - e.pageX;
 				deltaY = curYPos - e.pageY;
+				
+				isDragging = true;
 			};
 		});
 		
 		function moveScroll() {
-			if(curDown) {			
+			if(curDown && !overlayVisible) {			
 				$main.scrollLeft(curScrollLeft + deltaX);
 				$main.scrollTop(curScrollTop + deltaY);
 			}
@@ -125,9 +130,51 @@ $(document).ready(function() {
 		})();
 	}
 	
+	// STEP 3: interactivity
+	var overlayVisible = false,
+		selectedIndex = -1;
+	
+	function showDarken() {
+		$darken.fadeIn("slow");
+	}
+	
+	function hideDarken() {
+		$darken.fadeOut("slow");
+	}
+	
+	function showSelectedIndex(newIndex) {
+		if(newIndex < 0) {
+			$overlay.fadeOut("slow");
+		}else {
+			$overlay.fadeIn("slow");
+		}
+	}
+	
+	function hideOverlay() {
+		hideDarken();
+		
+		overlayVisible = false;
+		
+		showSelectedIndex(-1);
+	}
+			
 	// event listeners
 	$main.on('click', '.micromonial', function(evt){
-		console.log("clicked: " + $(this).attr('id'));
+		if(!isDragging) {
+			overlayVisible = true;
+			
+			showDarken();
+			
+			var newIndex = parseInt($(this).attr('id').toString().split("micromonial-").join("").toString());
+			
+			showSelectedIndex(newIndex);
+		}
+	});
+	
+	$('#overlay .close').click(function(evt) {
+		evt.preventDefault();
+		
+		hideOverlay();		
 	});
 });
 
