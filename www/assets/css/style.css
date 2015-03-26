@@ -109,12 +109,15 @@ footer {
 }
 #overlay {
   position: absolute;
-  top: 4em;
+  top: 6em;
   left: 50%;
   width: 512px;
   margin-left: -256px;
   background: #fff;
   z-index: 1001;
+}
+#overlay .inner {
+  padding: 20px;
 }
 @media screen and (max-width: 40.063em) {
   header h1 {
@@ -122,5 +125,12 @@ footer {
   }
   footer {
     display: none;
+  }
+  #overlay {
+    top: 4em;
+    left: 5%;
+    width: 90%;
+    margin-left: 0;
+    bottom: 5%;
   }
 }
