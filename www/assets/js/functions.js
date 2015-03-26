@@ -10,7 +10,7 @@ $(document).ready(function() {
 		touch = Modernizr.touch;
 	
 	// STEP 1: load the data
-	$container.load("grid.php", function(evt){
+	$container.load("grid.html", function(evt){
 		// while we're waiting 500ms, show some animation or whatever
 		setTimeout(function() {
 			snapToCenter();
