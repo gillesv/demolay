@@ -19,7 +19,7 @@
 				$j ++):			
 		?>
 			<div class="micromonial" id="micromonial-<?php echo($j + $i*$numCols); ?>" title="micromonial-<?php echo($j + $i*$numCols); ?>">
-				<img src="assets/img/placeholder.png" alt="<?php echo($j + 1 + $i*$numCols); ?>" /> <?php /* <img src="/generator/172x286/ccc/fff&text=<?php echo($j + 1 + $i*$numCols); ?>" alt="" /> */ ?>
+				<img src="assets/img/portraits/portrait-<?php echo(($j + $i*$numCols) % 23 + 1) ?>.jpg" alt="<?php echo($j + 1 + $i*$numCols); ?>" /> <?php /* <img src="/generator/172x286/ccc/fff&text=<?php echo($j + 1 + $i*$numCols); ?>" alt="" /> */ ?>
 			</div>
 		<?php
 			endfor;
