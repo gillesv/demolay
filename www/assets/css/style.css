@@ -129,6 +129,15 @@ footer {
   right: 10px;
   top: 10px;
 }
+#overlay .video {
+  float: left;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
+#overlay .video img {
+  display: block;
+  max-width: 100%;
+}
 #animator {
   position: absolute;
   width: 100%;
@@ -150,5 +159,8 @@ footer {
     width: 90%;
     margin-left: 0;
     bottom: 5%;
+  }
+  #overlay .video {
+    width: 50%;
   }
 }
